@@ -3,7 +3,7 @@
 Code and results for the paper
 
 > **Agentic Mobility Systems: A Mathematical Foundation for Human and Machine Agency, Delegation, Autonomy, and Accountability**
-> Ali Eslami and Jiangbo Yu, McGill University (2026). Submitted to *Transportation Research Part B: Methodological*.
+> Ali Eslami and Jiangbo Yu, McGill University (2026). Submitted to journal
 
 The paper defines **agentic mobility systems (AgMS)**: transportation systems in which humans and organisations (*principals*) delegate decisions to AI agents. The agents interpret goals stated in natural language, reason over memory and tools, communicate, and act through graded authority (self-execution, human approval, safety shields). The paper proves that such systems are well posed and admit a Markov lift. It characterises their long-run behaviour, decomposes the welfare loss of delegation by layer, and gives conditions for shield-certified safety.
 
