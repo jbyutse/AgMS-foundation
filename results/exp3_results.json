@@ -1,0 +1,248 @@
+{
+  "agents_only": [
+    {
+      "shield": "validity",
+      "q_D": 0.0,
+      "misaligned": 0.0,
+      "viol_rate": 1.0,
+      "viol_rate_max": 1.0,
+      "mean_excess": 72.16472222222222,
+      "W": 18.670688298377396
+    },
+    {
+      "shield": "validity",
+      "q_D": 0.0,
+      "misaligned": 0.2,
+      "viol_rate": 1.0,
+      "viol_rate_max": 1.0,
+      "mean_excess": 76.97166666666666,
+      "W": 18.98047189856363
+    },
+    {
+      "shield": "validity",
+      "q_D": 0.0,
+      "misaligned": 1.0,
+      "viol_rate": 1.0,
+      "viol_rate_max": 1.0,
+      "mean_excess": 208.82861111111112,
+      "W": 47.239026141530324
+    },
+    {
+      "shield": "validity",
+      "q_D": 0.1,
+      "misaligned": 0.0,
+      "viol_rate": 1.0,
+      "viol_rate_max": 1.0,
+      "mean_excess": 72.2375,
+      "W": 18.62551707352702
+    },
+    {
+      "shield": "validity",
+      "q_D": 0.1,
+      "misaligned": 0.2,
+      "viol_rate": 1.0,
+      "viol_rate_max": 1.0,
+      "mean_excess": 76.97083333333333,
+      "W": 18.911814004151125
+    },
+    {
+      "shield": "validity",
+      "q_D": 0.1,
+      "misaligned": 1.0,
+      "viol_rate": 1.0,
+      "viol_rate_max": 1.0,
+      "mean_excess": 208.32333333333332,
+      "W": 44.71463062019373
+    },
+    {
+      "shield": "validity",
+      "q_D": 0.3,
+      "misaligned": 0.0,
+      "viol_rate": 1.0,
+      "viol_rate_max": 1.0,
+      "mean_excess": 72.37444444444444,
+      "W": 18.577742596414446
+    },
+    {
+      "shield": "validity",
+      "q_D": 0.3,
+      "misaligned": 0.2,
+      "viol_rate": 1.0,
+      "viol_rate_max": 1.0,
+      "mean_excess": 76.92222222222223,
+      "W": 18.83620659235285
+    },
+    {
+      "shield": "validity",
+      "q_D": 0.3,
+      "misaligned": 1.0,
+      "viol_rate": 1.0,
+      "viol_rate_max": 1.0,
+      "mean_excess": 206.56000000000003,
+      "W": 39.320674269596594
+    },
+    {
+      "shield": "quota",
+      "q_D": 0.0,
+      "misaligned": 0.0,
+      "viol_rate": 0.0,
+      "viol_rate_max": 0.0,
+      "mean_excess": 0.0,
+      "W": 20.779304951746518
+    },
+    {
+      "shield": "quota",
+      "q_D": 0.0,
+      "misaligned": 0.2,
+      "viol_rate": 0.0,
+      "viol_rate_max": 0.0,
+      "mean_excess": 0.0,
+      "W": 20.538356820071954
+    },
+    {
+      "shield": "quota",
+      "q_D": 0.0,
+      "misaligned": 1.0,
+      "viol_rate": 0.0,
+      "viol_rate_max": 0.0,
+      "mean_excess": 0.0,
+      "W": 30.62593439402009
+    },
+    {
+      "shield": "quota",
+      "q_D": 0.1,
+      "misaligned": 0.0,
+      "viol_rate": 0.0,
+      "viol_rate_max": 0.0,
+      "mean_excess": 0.0,
+      "W": 20.894685076804453
+    },
+    {
+      "shield": "quota",
+      "q_D": 0.1,
+      "misaligned": 0.2,
+      "viol_rate": 0.0,
+      "viol_rate_max": 0.0,
+      "mean_excess": 0.0,
+      "W": 20.65965775901639
+    },
+    {
+      "shield": "quota",
+      "q_D": 0.1,
+      "misaligned": 1.0,
+      "viol_rate": 0.0,
+      "viol_rate_max": 0.0,
+      "mean_excess": 0.0,
+      "W": 30.327213054265194
+    },
+    {
+      "shield": "quota",
+      "q_D": 0.3,
+      "misaligned": 0.0,
+      "viol_rate": 0.0,
+      "viol_rate_max": 0.0,
+      "mean_excess": 0.0,
+      "W": 21.140627387688955
+    },
+    {
+      "shield": "quota",
+      "q_D": 0.3,
+      "misaligned": 0.2,
+      "viol_rate": 0.0,
+      "viol_rate_max": 0.0,
+      "mean_excess": 0.0,
+      "W": 20.9055661342019
+    },
+    {
+      "shield": "quota",
+      "q_D": 0.3,
+      "misaligned": 1.0,
+      "viol_rate": 0.0,
+      "viol_rate_max": 0.0,
+      "mean_excess": 0.0,
+      "W": 29.63992847464872
+    }
+  ],
+  "with_unmediated_humans": [
+    {
+      "misaligned": 0.2,
+      "kappa": 0.0,
+      "viol_rate": 0.0,
+      "viol_rate_max": 0.0,
+      "mean_excess": 0.0,
+      "W": 26.93142450417134
+    },
+    {
+      "misaligned": 0.2,
+      "kappa": 0.05,
+      "viol_rate": 0.9572222222222223,
+      "viol_rate_max": 1.0,
+      "mean_excess": 4.646388888888889,
+      "W": 26.463072051448762
+    },
+    {
+      "misaligned": 0.2,
+      "kappa": 0.1,
+      "viol_rate": 0.993611111111111,
+      "viol_rate_max": 1.0,
+      "mean_excess": 9.639722222222224,
+      "W": 26.01817043137253
+    },
+    {
+      "misaligned": 0.2,
+      "kappa": 0.25,
+      "viol_rate": 1.0,
+      "viol_rate_max": 1.0,
+      "mean_excess": 24.595000000000002,
+      "W": 24.85621683370246
+    },
+    {
+      "misaligned": 0.2,
+      "kappa": 0.5,
+      "viol_rate": 1.0,
+      "viol_rate_max": 1.0,
+      "mean_excess": 48.712777777777774,
+      "W": 23.419427847837223
+    },
+    {
+      "misaligned": 1.0,
+      "kappa": 0.0,
+      "viol_rate": 0.0,
+      "viol_rate_max": 0.0,
+      "mean_excess": 0.0,
+      "W": 33.449653449203375
+    },
+    {
+      "misaligned": 1.0,
+      "kappa": 0.05,
+      "viol_rate": 0.9572222222222223,
+      "viol_rate_max": 1.0,
+      "mean_excess": 4.650277777777778,
+      "W": 33.26723542932665
+    },
+    {
+      "misaligned": 1.0,
+      "kappa": 0.1,
+      "viol_rate": 0.993611111111111,
+      "viol_rate_max": 1.0,
+      "mean_excess": 9.648333333333335,
+      "W": 33.0841194015551
+    },
+    {
+      "misaligned": 1.0,
+      "kappa": 0.25,
+      "viol_rate": 1.0,
+      "viol_rate_max": 1.0,
+      "mean_excess": 24.621388888888887,
+      "W": 32.65461484190867
+    },
+    {
+      "misaligned": 1.0,
+      "kappa": 0.5,
+      "viol_rate": 1.0,
+      "viol_rate_max": 1.0,
+      "mean_excess": 49.621666666666655,
+      "W": 32.21471146677085
+    }
+  ]
+}

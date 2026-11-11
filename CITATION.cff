@@ -1,0 +1,23 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite the paper below."
+title: "agms-foundations: reference implementation and experiments for agentic mobility systems"
+authors:
+  - family-names: Eslami
+    given-names: Ali
+    affiliation: McGill University
+  - family-names: Yu
+    given-names: Jiangbo
+    affiliation: McGill University
+license: MIT
+version: 1.0.0
+date-released: 2026-11-30
+preferred-citation:
+  type: article
+  title: "Agentic Mobility Systems: A Mathematical Foundation for Human and Machine Agency, Delegation, Autonomy, and Accountability"
+  authors:
+    - family-names: Eslami
+      given-names: Ali
+    - family-names: Yu
+      given-names: Jiangbo
+  year: 2026
+  notes: "Submitted to Transportation Research Part B: Methodological"
