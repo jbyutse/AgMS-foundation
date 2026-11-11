@@ -1,4 +1,4 @@
-"""Reproduce all experiments of the paper (Section 8). Outputs are written to results/."""
+"""Reproduce all experiments of the paper (Section 9). Outputs are written to results/."""
 import os
 import subprocess
 import sys
