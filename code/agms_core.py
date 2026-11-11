@@ -1,6 +1,7 @@
 """
-AgMS reference implementation (Eslami & Yu, "Agentic Mobility Systems: A Mathematical
-Foundation for Human and Machine Agency, Delegation, Autonomy, and Accountability").
+AgMS reference implementation (Eslami & Yu, "Mathematical Foundations of Agentic
+Mobility Systems: Modelling Human and Machine Agency for Trustworthy Delegation,
+Autonomy, and Accountability").
 
 Parameter names follow the paper: q_I (interpretation drift), q_D (invalid deliberation
 outputs), alpha (approval probability), T (sampling temperature), rho (re-planning
@@ -79,7 +80,7 @@ def run(net, v, g, days=200, disc=0.95, L=5, T=1.0, rho=0.5,
     total, wsum = 0.0, 0.0
     viol_days, excess = 0, []
     ev = {"drift": 0, "drift_exec": 0, "drift_selfexec": 0, "decisions": 0}
-    daily_cost = []
+    daily_cost, route_times = [], []
     for d in range(days):
         # ---- cognition (Phi then Pi) ----
         theta = theta_spec.copy()
@@ -135,7 +136,7 @@ def run(net, v, g, days=200, disc=0.95, L=5, T=1.0, rho=0.5,
         gc = tt[route] + 60.0 * net.toll[route] / v
         w = disc ** d
         total += w * gc.mean(); wsum += w; acc += w * gc
-        daily_cost.append(gc.mean())
+        daily_cost.append(gc.mean()); route_times.append(tt)
         if net.restricted is not None and permits is not None:
             ex = flows[net.restricted] - permits
             if d >= 20:
@@ -147,7 +148,8 @@ def run(net, v, g, days=200, disc=0.95, L=5, T=1.0, rho=0.5,
             if net.restricted is not None:
                 hc = hc.copy(); hc[net.restricted] = np.inf        # compliant habit: never the restricted link
             h_route = np.where(r_hum.random(humans) < 0.2, int(np.argmin(hc)), h_route)
-    out = {"W": total / wsum, "Wi": acc / wsum, "daily_cost": np.array(daily_cost)}
+    out = {"W": total / wsum, "Wi": acc / wsum, "daily_cost": np.array(daily_cost),
+           "route_times": np.array(route_times)}
     if record:
         out["events"] = ev
     if permits is not None:

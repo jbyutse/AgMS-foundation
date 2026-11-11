@@ -1,6 +1,7 @@
 cff-version: 1.2.0
 message: "If you use this code, please cite the paper below."
-title: "agms-foundations: reference implementation and experiments for agentic mobility systems"
+title: "AgMS-foundation: reference implementation and experiments for agentic mobility systems"
+repository-code: "https://github.com/jbyutse/AgMS-foundation"
 authors:
   - family-names: Eslami
     given-names: Ali
@@ -13,7 +14,7 @@ version: 1.0.0
 date-released: 2026-11-30
 preferred-citation:
   type: article
-  title: "Agentic Mobility Systems: A Mathematical Foundation for Human and Machine Agency, Delegation, Autonomy, and Accountability"
+  title: "Mathematical Foundations of Agentic Mobility Systems: Modelling Human and Machine Agency for Trustworthy Delegation, Autonomy, and Accountability"
   authors:
     - family-names: Eslami
       given-names: Ali
