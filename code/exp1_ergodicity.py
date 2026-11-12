@@ -88,6 +88,15 @@ def stationary(P):
     return pi
 
 
+def lazy_chain_check(P, pi, iters=20000):
+    """Cross-check of the eigenvector solution: iterate the lazy chain (P + I) / 2 from the uniform law."""
+    lazy = (P + np.eye(len(P))) / 2
+    v = np.full(len(P), 1.0 / len(P))
+    for _ in range(iters):
+        v = v @ lazy
+    return float(np.abs(v - pi).max())
+
+
 def dobrushin(Pk):
     # delta(P) = 1 - min_{z,z'} sum_y min(P(z,y), P(z',y))  (computed exactly)
     m = np.inf
@@ -166,7 +175,8 @@ def part_a():
         tv_tab[f"T={T},rho={rho}"] = {"days_to_TV<0.01": t01, "TV_day50": float(tv[50]),
                                       "TV_day199": float(tv[-1]), "dobrushin_P2": float(d2),
                                       "pi_mean_share": float(s @ pi),
-                                      "pi_sd_share": float(np.sqrt((s ** 2) @ pi - (s @ pi) ** 2))}
+                                      "pi_sd_share": float(np.sqrt((s ** 2) @ pi - (s @ pi) ** 2)),
+                                      "pi_check_lazy_chain_max_abs_diff": lazy_chain_check(P, pi)}
     res["tv"] = tv_tab
     res["deterministic_attractors"] = "fixed point at 50 and 2-cycle {0,100}"
 

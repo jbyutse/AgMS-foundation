@@ -1,0 +1,411 @@
+{
+ "model": "gpt-6-luna",
+ "calls_in_loop": 3619,
+ "settings": {
+  "agents": 100,
+  "days": 60,
+  "seeds": 6,
+  "rho": 0.1,
+  "alpha": 0.8,
+  "L": 5,
+  "disc": 0.95,
+  "rep_inputs": 60,
+  "rep_calls": 20
+ },
+ "interpretation": {
+  "kernel_counts_class_by_profile": [
+   [
+    713,
+    0,
+    0
+   ],
+   [
+    0,
+    2320,
+    0
+   ],
+   [
+    0,
+    0,
+    586
+   ]
+  ],
+  "drift_rate": [
+   0.0,
+   0.0,
+   0.001060383098173544
+  ],
+  "drift_rate_by_class": [
+   [
+    0.0,
+    0.0,
+    0.005359063982893849
+   ],
+   [
+    0.0,
+    0.0,
+    0.0016531247224423557
+   ],
+   [
+    0.0,
+    0.0,
+    0.006512934998141874
+   ]
+  ],
+  "drift_rate_by_text": [
+   [
+    [
+     0.0,
+     0.0,
+     0.03404418228738337
+    ],
+    [
+     0.0,
+     0.0,
+     0.031020271055929513
+    ],
+    [
+     0.0,
+     0.0,
+     0.02616152370990237
+    ],
+    [
+     0.0,
+     0.0,
+     0.024033793455520962
+    ],
+    [
+     0.0,
+     0.0,
+     0.06419614448811528
+    ],
+    [
+     0.0,
+     0.0,
+     0.028918651988533713
+    ]
+   ],
+   [
+    [
+     0.0,
+     0.0,
+     0.011973509669569032
+    ],
+    [
+     0.0,
+     0.0,
+     0.008895854405874745
+    ],
+    [
+     0.0,
+     0.0,
+     0.008773949300386255
+    ],
+    [
+     0.0,
+     0.0,
+     0.007639781593249245
+    ],
+    [
+     0.0,
+     0.0,
+     0.014342805598532862
+    ],
+    [
+     0.0,
+     0.0,
+     0.0100607162760684
+    ]
+   ],
+   [
+    [
+     0.0,
+     0.0,
+     0.05422802421176257
+    ],
+    [
+     0.0,
+     0.0,
+     0.04811526823109757
+    ],
+    [
+     0.0,
+     0.0,
+     0.02023581765008302
+    ],
+    [
+     0.0,
+     0.0,
+     0.049351503566216516
+    ],
+    [
+     0.0,
+     0.0,
+     0.02616152370990237
+    ],
+    [
+     0.0,
+     0.0,
+     0.08762453925039232
+    ]
+   ]
+  ]
+ },
+ "invalid_outputs": {
+  "rate": [
+   0.0,
+   0.0,
+   0.001060383098173544
+  ]
+ },
+ "deliberation": {
+  "picks_best_route": [
+   0.937828129317491,
+   0.9294871385262932,
+   0.9452405890122225
+  ],
+  "mean_regret_min": 0.06606797457861288,
+  "errors": {
+   "n": 225,
+   "by_stated_profile": [
+    {
+     "profile": "time-first",
+     "decisions": 713,
+     "errors": 1
+    },
+    {
+     "profile": "balanced",
+     "decisions": 2320,
+     "errors": 217
+    },
+    {
+     "profile": "cost-first",
+     "decisions": 586,
+     "errors": 7
+    }
+   ],
+   "choose_a_faster_dearer_route": 221,
+   "keep_the_current_route": 127,
+   "median_regret_min": 1.0
+  },
+  "fitted_temperature": [
+   0.44318002182242167,
+   0.4097468400981905,
+   0.4793411748958338
+  ],
+  "stays_on_current_route": 0.6308372478585245,
+  "by_margin": [
+   {
+    "margin_min": [
+     0,
+     0.5
+    ],
+    "n": 544,
+    "model_picks_best": 0.9338235294117647,
+    "softmax_T1": 0.4825147344394734,
+    "softmax_fitted": 0.5901922410114611
+   },
+   {
+    "margin_min": [
+     0.5,
+     1
+    ],
+    "n": 672,
+    "model_picks_best": 0.8883928571428571,
+    "softmax_T1": 0.5833057704818854,
+    "softmax_fitted": 0.7965118200439734
+   },
+   {
+    "margin_min": [
+     1,
+     2
+    ],
+    "n": 910,
+    "model_picks_best": 0.8978021978021978,
+    "softmax_T1": 0.7241419138529489,
+    "softmax_fitted": 0.9379386307205979
+   },
+   {
+    "margin_min": [
+     2,
+     4
+    ],
+    "n": 898,
+    "model_picks_best": 0.9799554565701559,
+    "softmax_T1": 0.9326245594657021,
+    "softmax_fitted": 0.9968883346853695
+   },
+   {
+    "margin_min": [
+     4,
+     null
+    ],
+    "n": 595,
+    "model_picks_best": 0.9949579831932773,
+    "softmax_T1": 0.9893984307431881,
+    "softmax_fitted": 0.9999636547996618
+   }
+  ]
+ },
+ "surrogate_parameters": {
+  "default": {
+   "q_I": 0.1,
+   "q_D": 0.05,
+   "T": 1.0
+  },
+  "fitted_to_model": {
+   "q_I": 0.0,
+   "q_D": 0.0,
+   "T": 0.44318002182242167
+  }
+ },
+ "default_vs_fitted_surrogate": {
+  "mean_tv_per_decision": 0.24359878307227834,
+  "max_tv_per_decision": 0.3504263947981135
+ },
+ "repeated_calls": {
+  "inputs": 60,
+  "calls_per_input": 20,
+  "inputs_with_one_answer_in_all_calls": 37,
+  "mean_share_of_most_frequent_answer": 0.9350000000000002,
+  "most_frequent_answer_is_a_best_route": 60,
+  "profile_other_than_the_instruction_class": [
+   2,
+   1200
+  ],
+  "invalid_outputs": [
+   0,
+   1200
+  ]
+ },
+ "distance_to_surrogate": {
+  "inputs": 60,
+  "calls_per_input": 20,
+  "default": {
+   "mean_tv": 0.3388176653300727,
+   "se": 0.019785042129608313,
+   "sampling_floor": 0.14641036287726034
+  },
+  "fitted_to_model": {
+   "mean_tv": 0.1409274865855306,
+   "se": 0.02002610677846174,
+   "sampling_floor": 0.049149428473897354
+  }
+ },
+ "system": {
+  "W_per_seed": {
+   "model": [
+    21.253674912833507,
+    21.741955424929195,
+    21.12981100163496,
+    20.75995006852984,
+    20.671213413331767,
+    21.240510584218143
+   ],
+   "surrogate_default": [
+    21.42959948651013,
+    21.66139350433943,
+    21.032426719855007,
+    20.902461457517575,
+    20.742946201856746,
+    21.034788823245243
+   ],
+   "surrogate_fitted": [
+    21.216852165845793,
+    21.747297209492892,
+    21.058255676523245,
+    20.680424824607798,
+    20.684698695287953,
+    21.149908584900707
+   ],
+   "reference": [
+    20.647908876434094,
+    21.5018563027732,
+    20.70249120216987,
+    20.647175825258707,
+    20.501079309539364,
+    20.667012284632015
+   ]
+  },
+  "W": {
+   "model": [
+    21.13285256757957,
+    0.4062741531502238
+   ],
+   "surrogate_default": [
+    21.13393603222069,
+    0.36116936995880883
+   ],
+   "surrogate_fitted": [
+    21.089572859443066,
+    0.41575342527574266
+   ],
+   "reference": [
+    20.777920633467875,
+    0.37916779022663977
+   ]
+  },
+  "delegation_loss": {
+   "model": [
+    0.35493193411169344,
+    0.22108307275307368
+   ],
+   "surrogate_default": [
+    0.3560153987528138,
+    0.23173189045498124
+   ],
+   "surrogate_fitted": [
+    0.3116522259751899,
+    0.20764712769684493
+   ]
+  },
+  "intervals": "mean and half-width of the 95% Student-t interval over replications (paired by seed for differences)",
+  "model_minus_surrogate_default": [
+   -0.001083464641120339,
+   0.15894212267204172
+  ],
+  "model_minus_surrogate_fitted": [
+   0.04327970813650358,
+   0.04688677055410777
+  ],
+  "burn_in_days": 10,
+  "sd_daily_cost_after_burn_in": {
+   "model": 0.46652934800561846,
+   "surrogate_default": 0.349081981762083,
+   "surrogate_fitted": 0.4047490024669951,
+   "reference": 0.4114379371773489
+  },
+  "model_route_shares_after_burn_in": [
+   0.22593333333333335,
+   0.38633333333333336,
+   0.3877333333333333
+  ]
+ },
+ "corollary_4": {
+  "osc_c_min": 170.201314319647,
+  "model_calls_per_day": 10.052777777777777,
+  "default": 11014.59766989336,
+  "fitted_to_model": 4581.400925057192,
+  "summed_deviation_per_day": {
+   "default": 3.4060586967487025,
+   "fitted_to_model": 1.4167127054250976
+  },
+  "single_agent_deviation_per_day": {
+   "default": 0.03388176653300727,
+   "fitted_to_model": 0.01409274865855306
+  },
+  "informative_below": 0.052631578947368474
+ },
+ "usage": {
+  "new_calls_this_run": 4822,
+  "input_tokens": 1181037,
+  "output_tokens": 641033,
+  "calls_in_log": 4822
+ },
+ "run": {
+  "endpoint": "responses",
+  "reasoning_effort": null,
+  "finished": "2026-11-11 19:20",
+  "recomputed_from_log": "2026-11-11 19:53"
+ }
+}

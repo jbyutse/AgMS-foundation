@@ -4,18 +4,22 @@ identity / rubber-stamp equivalence (Proposition 1) with counterfactual replay u
 common random numbers.
 
 Outputs: exp2_results.json and fig_exp2.pdf (six panels):
-  (a) exact population-level decomposition in two idealisation orders (stable regime);
+  (a) exact population-level decomposition in two idealisation orders and its average over
+      all 24 orders, the Shapley attribution (stable regime);
   (b) layer loss against the layer's per-decision deviation (stable regime);
   (c) individual specification loss against the principal's value of time, with a
       static softmax prediction;
   (d) layer losses in the stable and the synchronised regime;
   (e) daily cost of the idealised and the actual system in the synchronised regime;
   (f) effective influence of a drifted objective against the approval probability.
+It also reports the individual audit scope (J = {i}) in the synchronised regime, which is
+quoted in the text but not plotted.
 
 Run `python exp2_accountability.py --plot-only` to redraw the figure from the saved JSON.
 Set AGMS_USETEX=1 to render text with LaTeX (as in the paper).
 """
 import json, os, sys
+from itertools import permutations
 import numpy as np
 import matplotlib
 matplotlib.use("Agg")
@@ -122,6 +126,27 @@ def compute():
     mb, hb = ci(bu)
     res["population_bottom_up_A_D_I_S"] = {"mean": mb.tolist(), "CI95": hb.tolist()}
 
+    # order-free attribution: Shapley value of the layer game (average marginal loss over the 4! orders)
+    flags = ["perfect_spec", "faithful", "no_halluc", "full_exec"]       # reference switches of S, I, D, A
+
+    def shapley(seed):
+        val = {}
+        for mask in range(16):                                           # bit j set: layer j uses its actual kernel
+            ref = {flags[j]: not (mask >> j) & 1 for j in range(4)}
+            val[mask] = A.run(NET, V, G, seed=seed, **{**BASE, **ref})["W"]
+        phi = np.zeros(4)
+        for order in permutations(range(4)):
+            mask = 0
+            for j in order:
+                phi[j] += val[mask | (1 << j)] - val[mask]
+                mask |= 1 << j
+        return phi / 24, val[15] - val[0]
+    sh = [shapley(s) for s in range(R)]
+    phi = np.array([a for a, _ in sh]); msh, hsh = ci(phi)
+    res["population_shapley_S_I_D_A"] = {"mean": msh.tolist(), "CI95": hsh.tolist(),
+                                         "sum_minus_total_max_abs": float(np.abs(phi.sum(1) - np.array([b for _, b in sh])).max()),
+                                         "total_matches_top_down": bool(np.allclose([b for _, b in sh], tot))}
+
     # ---- (2) layer sweeps: response to the layer's TV deviation ----
     sweeps = {}
     for name, par, vals, idx in [("interpretation", "q_I", [0, .05, .1, .2, .3, .4], 1),
@@ -157,6 +182,18 @@ def compute():
     res["individual_bound_holds_all"] = bool(all(np.all(np.abs(r["Lambda"]) <= np.array(r["bound"]) + 1e-9) for r in indiv))
     ratio = np.array([np.array(r["bound"][1:]) / np.maximum(np.abs(r["Lambda"][1:]), 1e-9) for r in indiv])
     res["individual_bound_over_actual_median"] = np.median(ratio, axis=0).tolist()
+    # individual audit scope in the synchronised regime (J = {i}, same principals)
+    ind_sync = []
+    for i in sample:
+        J = np.zeros(N, bool); J[i] = True
+        Vi = np.array([layered(s, J=J, key="Wi", rho=0.5)[:, i] for s in range(24)])
+        ind_sync.append(np.diff(Vi, axis=1).mean(0))
+    ind_sync = np.array(ind_sync); tot_i = ind_sync.sum(1)
+    mi, hi = ci(tot_i)
+    res["individual_synchronised"] = {"n_principals": int(len(sample)), "replications": 24,
+                                      "Lambda_total_mean": float(mi), "Lambda_total_CI95": float(hi),
+                                      "Lambda_S_I_D_A_mean": ind_sync.mean(0).tolist(),
+                                      "n_positive_total": int((tot_i > 0).sum())}
     # static softmax prediction of the individual specification loss (mean route times, actual system, days 50+)
     tbar = np.mean([A.run(NET, V, G, seed=s, **BASE)["route_times"][50:].mean(0) for s in range(R)], axis=0)
     vgrid = np.linspace(8.0, 46.0, 381)
@@ -200,28 +237,30 @@ def make_figure(res):
     fig.subplots_adjust(left=0.088, right=0.99, top=0.885, bottom=0.085, wspace=0.44, hspace=0.62)
     keys = ["S", "I", "D", "A"]
 
-    # (a) exact decomposition in two orders
+    # (a) exact decomposition in two orders and averaged over all orders
     ax = axes[0, 0]
     td = dict(zip(keys, res["population_baseline"]["Lambda_S_I_D_A"]))
     bu = dict(zip(["A", "D", "I", "S"], res["population_bottom_up_A_D_I_S"]["mean"]))
     tot, totci = res["population_baseline"]["total"], res["population_baseline"]["total_CI95"]
-    for y, order, vals in [(1, keys, td), (0, ["A", "D", "I", "S"], bu)]:
+    shp = dict(zip(keys, res["population_shapley_S_I_D_A"]["mean"]))
+    for y, order, vals in [(2, keys, td), (1, ["A", "D", "I", "S"], bu), (0, keys, shp)]:
         left = 0.0
         for k in order:
             w = vals[k]
             ax.barh(y, w, left=left, height=0.52, color=LAYER[k], edgecolor="white", lw=0.6)
-            if w > 0.05:
+            if w > 0.06:
                 ax.text(left + w / 2, y, f"{w:.3f}", ha="center", va="center", fontsize=6.0, color="white")
             left += w
     ax.axvspan(tot - totci, tot + totci, color=INK, alpha=0.10, lw=0)
     ax.axvline(tot, color=INK, lw=0.7, ls=(0, (2, 1.5)))
-    ax.text(tot - 0.006, 1.86, tx(rf"total $\Lambda={tot:.3f}\pm{totci:.3f}$", rf"total $\Lambda={tot:.3f}\pm{totci:.3f}$"),
+    ax.text(tot - 0.006, 2.88, tx(rf"total $\Lambda={tot:.3f}\pm{totci:.3f}$", rf"total $\Lambda={tot:.3f}\pm{totci:.3f}$"),
             ha="right", va="center", fontsize=6.2, color=INK)
-    ax.text(0.0, 1.40, tx(r"top-down, $S\to I\to D\to A$", r"top-down, $S\to I\to D\to A$"), fontsize=6.2, color=INK, va="center")
-    ax.text(0.0, 0.40, tx(r"bottom-up, $A\to D\to I\to S$", r"bottom-up, $A\to D\to I\to S$"), fontsize=6.2, color=INK, va="center")
+    ax.text(0.0, 2.41, tx(r"top-down, $S\to I\to D\to A$", r"top-down, $S\to I\to D\to A$"), fontsize=6.2, color=INK, va="center")
+    ax.text(0.0, 1.41, tx(r"bottom-up, $A\to D\to I\to S$", r"bottom-up, $A\to D\to I\to S$"), fontsize=6.2, color=INK, va="center")
+    ax.text(0.0, 0.41, "Shapley, all 24 orders", fontsize=6.2, color=INK, va="center")
     ax.set_yticks([])
     ax.spines["left"].set_visible(False)
-    ax.set_ylim(-0.35, 2.05); ax.set_xlim(0, 0.345)
+    ax.set_ylim(-0.35, 3.08); ax.set_xlim(0, 0.345)
     ax.set_xlabel("loss (min per traveller-day)")
     panel_title(ax, "a", "Exact, order-dependent split")
 
@@ -315,9 +354,9 @@ def make_figure(res):
     s = np.array([e["P_selfexec_given_drift"] for e in eff]); form = s + (1 - s) * a
     ax.fill_between(a, 0, s, color=ORANGE, alpha=0.42, lw=0)
     ax.fill_between(a, s, form, color=ORANGE, alpha=0.16, lw=0)
-    ax.plot(a, form, color=INK, lw=0.9, label=tx(r"$s_O+(1-s_O)\alpha$", r"$s_O+(1-s_O)\alpha$"))
+    ax.plot(a, form, color=INK, lw=0.9, label=tx(r"$e_O+(1-e_O)\alpha$", r"$e_O+(1-e_O)\alpha$"))
     ax.plot(a, emp, ls="none", marker="o", ms=3.6, mfc="white", mec=INK, mew=0.9, label="simulated")
-    ax.text(0.40, 0.11, tx(r"self-executed, $s_O$", r"self-executed, $s_O$"), fontsize=6.2, color="#6e2a0c", ha="center")
+    ax.text(0.40, 0.11, tx(r"self-executed, $e_O$", r"self-executed, $e_O$"), fontsize=6.2, color="#6e2a0c", ha="center")
     ax.text(0.56, 0.40, "approved by\nthe reviewer", fontsize=6.2, color="#8a3a14", ha="center", linespacing=1.0)
     ax.annotate("rubber stamp:\nfull autonomy", xy=(1.0, 1.0), xytext=(0.77, 0.62), fontsize=6.2, color=INK,
                 ha="center", va="center", linespacing=1.0,

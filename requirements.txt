@@ -2,3 +2,5 @@
 numpy>=1.24
 scipy>=1.10
 matplotlib>=3.7
+# Only for code/exp4_llm_agents.py with a real model (not needed for Experiments 1-3 or --mock):
+# openai>=1.66

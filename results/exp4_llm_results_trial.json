@@ -1,0 +1,332 @@
+{
+ "model": "o3-pro",
+ "calls_in_loop": 36,
+ "settings": {
+  "agents": 100,
+  "days": 3,
+  "seeds": 1,
+  "rho": 0.1,
+  "alpha": 0.8,
+  "L": 5,
+  "disc": 0.95,
+  "rep_inputs": 5,
+  "rep_calls": 3
+ },
+ "interpretation": {
+  "kernel_counts_class_by_profile": [
+   [
+    4,
+    0,
+    0
+   ],
+   [
+    0,
+    28,
+    0
+   ],
+   [
+    0,
+    0,
+    4
+   ]
+  ],
+  "drift_rate": [
+   0.0,
+   0.0,
+   0.09642183044857634
+  ],
+  "drift_rate_by_class": [
+   [
+    0.0,
+    0.0,
+    0.48990002040399916
+   ],
+   [
+    0.0,
+    0.0,
+    0.12064720365810762
+   ],
+   [
+    0.0,
+    0.0,
+    0.48990002040399916
+   ]
+  ],
+  "drift_rate_by_text": [
+   [
+    [
+     NaN,
+     NaN,
+     NaN
+    ],
+    [
+     0.0,
+     0.0,
+     0.7934567085261071
+    ],
+    [
+     NaN,
+     NaN,
+     NaN
+    ],
+    [
+     0.0,
+     0.0,
+     0.7934567085261071
+    ],
+    [
+     NaN,
+     NaN,
+     NaN
+    ],
+    [
+     0.0,
+     0.0,
+     0.6576280471103807
+    ]
+   ],
+   [
+    [
+     0.0,
+     0.0,
+     0.48990002040399916
+    ],
+    [
+     0.0,
+     0.0,
+     0.43449149475208104
+    ],
+    [
+     0.0,
+     0.0,
+     0.5615060804490177
+    ],
+    [
+     0.0,
+     2.7755575615628914e-17,
+     0.2588400172488141
+    ],
+    [
+     0.0,
+     0.0,
+     0.6576280471103807
+    ],
+    [
+     0.0,
+     0.0,
+     0.5615060804490177
+    ]
+   ],
+   [
+    [
+     NaN,
+     NaN,
+     NaN
+    ],
+    [
+     NaN,
+     NaN,
+     NaN
+    ],
+    [
+     0.0,
+     0.0,
+     0.6576280471103807
+    ],
+    [
+     0.0,
+     0.0,
+     0.7934567085261071
+    ],
+    [
+     0.0,
+     0.0,
+     0.7934567085261071
+    ],
+    [
+     NaN,
+     NaN,
+     NaN
+    ]
+   ]
+  ]
+ },
+ "invalid_outputs": {
+  "rate": [
+   0.0,
+   0.0,
+   0.09642183044857634
+  ]
+ },
+ "deliberation": {
+  "picks_best_route": [
+   1.0,
+   0.9035781695514236,
+   1.0
+  ],
+  "mean_regret_min": 0.0,
+  "fitted_temperature": [
+   0.021211843623476,
+   0.02,
+   0.021211843623476
+  ],
+  "stays_on_current_route": 0.2777777777777778,
+  "by_margin": [
+   {
+    "margin_min": [
+     0,
+     0.5
+    ],
+    "n": 1,
+    "model_picks_best": 1.0,
+    "softmax_T1": 0.4976601110083748,
+    "softmax_fitted": 0.5000000000000284
+   },
+   {
+    "margin_min": [
+     0.5,
+     1
+    ],
+    "n": 1,
+    "model_picks_best": 1.0,
+    "softmax_T1": 0.6640155331482416,
+    "softmax_fitted": 0.9999999999999953
+   },
+   {
+    "margin_min": [
+     1,
+     2
+    ],
+    "n": 14,
+    "model_picks_best": 1.0,
+    "softmax_T1": 0.7823588527873496,
+    "softmax_fitted": 1.0
+   },
+   {
+    "margin_min": [
+     2,
+     4
+    ],
+    "n": 20,
+    "model_picks_best": 1.0,
+    "softmax_T1": 0.9205564229279102,
+    "softmax_fitted": 1.0
+   }
+  ]
+ },
+ "surrogate_parameters": {
+  "default": {
+   "q_I": 0.1,
+   "q_D": 0.05,
+   "T": 1.0
+  },
+  "fitted_to_model": {
+   "q_I": 0.0,
+   "q_D": 0.0,
+   "T": 0.021211843623476
+  }
+ },
+ "default_vs_fitted_surrogate": {
+  "mean_tv_per_decision": 0.2631921563722804,
+  "max_tv_per_decision": 0.43226671915824877
+ },
+ "distance_to_surrogate": {
+  "inputs": 5,
+  "calls_per_input": 3,
+  "default": {
+   "mean_tv": 0.3093635898608337,
+   "se": 0.025951187879295397,
+   "sampling_floor": 0.34067456103279503
+  },
+  "fitted_to_model": {
+   "mean_tv": 7.256470101742092e-28,
+   "se": 2.962441513837061e-28,
+   "sampling_floor": 7.256470101742092e-28
+  }
+ },
+ "system": {
+  "W_per_seed": {
+   "model": [
+    22.625271131338245
+   ],
+   "surrogate_default": [
+    22.86938832882206
+   ],
+   "surrogate_fitted": [
+    22.625271131338245
+   ],
+   "reference": [
+    22.25112499431462
+   ]
+  },
+  "W": {
+   "model": [
+    22.625271131338245,
+    NaN
+   ],
+   "surrogate_default": [
+    22.86938832882206,
+    NaN
+   ],
+   "surrogate_fitted": [
+    22.625271131338245,
+    NaN
+   ],
+   "reference": [
+    22.25112499431462,
+    NaN
+   ]
+  },
+  "delegation_loss": {
+   "model": [
+    0.37414613702362587,
+    NaN
+   ],
+   "surrogate_default": [
+    0.6182633345074393,
+    NaN
+   ],
+   "surrogate_fitted": [
+    0.37414613702362587,
+    NaN
+   ]
+  },
+  "model_minus_surrogate_default": [
+   -0.24411719748381344,
+   NaN
+  ],
+  "model_minus_surrogate_fitted": [
+   0.0,
+   NaN
+  ],
+  "burn_in_days": 1,
+  "sd_daily_cost_after_burn_in": {
+   "model": 0.7307039873438548,
+   "surrogate_default": 0.8226108829970755,
+   "surrogate_fitted": 0.7307039873438548,
+   "reference": 0.22511223423859938
+  },
+  "model_route_shares_after_burn_in": [
+   0.235,
+   0.45499999999999996,
+   0.31
+  ]
+ },
+ "corollary_4": {
+  "osc_c_min": 170.201314319647,
+  "model_calls_per_day": 12.0,
+  "default": 12005.132428106437,
+  "fitted_to_model": 2.815938506894014e-23
+ },
+ "usage": {
+  "new_calls_this_run": 54,
+  "input_tokens": 13230,
+  "output_tokens": 23105,
+  "calls_in_log": 54
+ },
+ "run": {
+  "endpoint": "responses",
+  "reasoning_effort": null,
+  "finished": "2026-11-11 17:24"
+ }
+}

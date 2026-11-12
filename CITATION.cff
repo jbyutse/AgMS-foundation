@@ -3,22 +3,22 @@ message: "If you use this code, please cite the paper below."
 title: "AgMS-foundation: reference implementation and experiments for agentic mobility systems"
 repository-code: "https://github.com/jbyutse/AgMS-foundation"
 authors:
-  - family-names: Eslami
-    given-names: Ali
-    affiliation: McGill University
   - family-names: Yu
     given-names: Jiangbo
+    affiliation: McGill University
+  - family-names: Eslami
+    given-names: Ali
     affiliation: McGill University
 license: MIT
 version: 1.0.0
 date-released: 2026-11-30
 preferred-citation:
   type: article
-  title: "Mathematical Foundations of Agentic Mobility Systems: Modelling Human and Machine Agency for Trustworthy Delegation, Autonomy, and Accountability"
+  title: "Mathematical Foundations of Agentic Mobility Systems: Human and Machine Agency, Autonomy, and Trustworthy Delegation"
   authors:
-    - family-names: Eslami
-      given-names: Ali
     - family-names: Yu
       given-names: Jiangbo
+    - family-names: Eslami
+      given-names: Ali
   year: 2026
   notes: "Submitted to Transportation Research Part B: Methodological"
