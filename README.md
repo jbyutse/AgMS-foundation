@@ -1,6 +1,7 @@
 # Supplementary code and results
 
 Manuscript: *A Markov Model of Agentic Mobility Systems: From Human–Machine Agency to Network Traffic Dynamics*
+Jiangbo Yu and Ali Eslami, McGill University (2026). Preprint.
 
 This package contains a small reference implementation of the agentic mobility system of the
 manuscript (Algorithm 1) with surrogate agents, the scripts for the five experiments of Section 8,
