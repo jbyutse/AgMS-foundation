@@ -1,5 +1,5 @@
 """
-Experiment 1 -- Well-posedness and long-run behaviour (Theorem 3, Example 2).
+Experiment 1 -- Well-posedness and long-run behaviour (Theorem 4, Example 2).
 
 Part A: exact lifted Markov chain for a symmetric two-route network with N identical
         language-model-like (softmax) agents that observe yesterday's route costs
@@ -360,7 +360,7 @@ def part_b():
     for memory, col, lab in [("window", BLUE, "forgetful"), ("cumulative", ORANGE, "non-forgetful")]:
         sh, b2, c2 = traj[memory]
         ax.plot(days, b2.mean(axis=0), color=col, lw=1.1, label=f"belief, {lab}")
-        ax.plot(days, c2.mean(axis=0), color=col, lw=0.7, ls=(0, (1.5, 1.5)), label=f"realised, {lab}")
+        ax.plot(days, c2.mean(axis=0), color=col, lw=0.7, ls=(0, (1.5, 1.5)), label=f"realized, {lab}")
     ax.set_xlim(0, 399); ax.set_ylim(5, 44)
     ax.set_xlabel("day"); ax.set_ylabel("route-2 travel time (min)")
     ax.legend(fontsize=5.8, loc="center right", handlelength=1.6, labelspacing=0.2, bbox_to_anchor=(1.0, 0.62))
@@ -386,7 +386,7 @@ def part_b():
                         label=f"{'forgetful' if memory == 'window' else 'non-forgetful'}, IC-{ic}")
         if memory == "cumulative":
             ax.fill_between(Tgrid, curves["B"], curves["A"], color=ORANGE, alpha=0.12, lw=0)
-            ax.annotate("lock-in gap (A4)", xy=(0.27, 0.92), fontsize=6.2, color=ORANGE, ha="left")
+            ax.annotate("lock-in gap", xy=(0.27, 0.92), fontsize=6.2, color=ORANGE, ha="left")
         lock[memory] = {"T": Tgrid, "IC-A": curves["A"].tolist(), "IC-B": curves["B"].tolist()}
     ax.set_xscale("log"); ax.set_xticks([0.25, 0.5, 1, 2, 4]); ax.set_xticklabels(["0.25", "0.5", "1", "2", "4"])
     ax.minorticks_off()

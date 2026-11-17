@@ -1,7 +1,5 @@
 """
-AgMS reference implementation (Yu & Eslami, "Mathematical Foundations of Agentic
-Mobility Systems: Human and Machine Agency, Autonomy, and Trustworthy
-Delegation").
+AgMS reference implementation for the manuscript "A Markov Model of Agentic Mobility Systems: From Human-Machine Agency to Network Traffic Dynamics" (under double-anonymous review).
 
 Parameter names follow the paper: q_I (interpretation drift), q_D (invalid deliberation
 outputs), alpha (approval probability), T (sampling temperature), rho (re-planning

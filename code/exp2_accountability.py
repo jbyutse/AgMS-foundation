@@ -261,7 +261,7 @@ def make_figure(res):
     ax.set_yticks([])
     ax.spines["left"].set_visible(False)
     ax.set_ylim(-0.35, 3.08); ax.set_xlim(0, 0.345)
-    ax.set_xlabel("loss (min per traveller-day)")
+    ax.set_xlabel("loss (min per traveler-day)")
     panel_title(ax, "a", "Exact, order-dependent split")
 
     # (b) sweeps
@@ -327,11 +327,11 @@ def make_figure(res):
     ax.axvline(3.5, color=MUTED, lw=0.4, ls=(0, (1, 1.5)))
     ax.set_xticks(range(5)); ax.set_xticklabels([tx(rf"$\Lambda_{k}$", rf"$\Lambda_{k}$") for k in keys] + [r"$\Lambda$"])
     ax.errorbar([], [], fmt="o", ms=4.0, mfc="white", mec=INK, mew=0.9, label=tx(r"stable, $\rho=0.1$", r"stable, $\rho=0.1$"))
-    ax.errorbar([], [], fmt="o", ms=4.0, color=INK, label=tx(r"synchronised, $\rho=0.5$", r"synchronised, $\rho=0.5$"))
+    ax.errorbar([], [], fmt="o", ms=4.0, color=INK, label=tx(r"synchronized, $\rho=0.5$", r"synchronized, $\rho=0.5$"))
     ax.legend(loc="lower left", fontsize=6.2, handletextpad=0.2, borderaxespad=0.1)
     ax.set_ylim(-1.42, 0.45)
-    ax.set_ylabel("loss (min per traveller-day)")
-    panel_title(ax, "d", "Synchronisation flips signs")
+    ax.set_ylabel("loss (min per traveler-day)")
+    panel_title(ax, "d", "Synchronization flips signs")
 
     # (e) traces
     ax = axes[1, 1]
@@ -340,11 +340,11 @@ def make_figure(res):
     ax.plot(d[sl], np.array(tr["stable_reference"])[sl], color=MUTED, lw=0.8, ls=(0, (3, 1.5)),
             label=f"stable reference (s.d. {sd['stable_reference']:.2f})")
     ax.plot(d[sl], np.array(tr["sync_actual"])[sl], color=BLUE, lw=0.9, label=f"actual (s.d. {sd['sync_actual']:.1f})")
-    ax.plot(d[sl], np.array(tr["sync_reference"])[sl], color=INK, lw=0.9, label=f"idealised (s.d. {sd['sync_reference']:.1f})")
+    ax.plot(d[sl], np.array(tr["sync_reference"])[sl], color=INK, lw=0.9, label=f"idealized (s.d. {sd['sync_reference']:.1f})")
     ax.set_ylim(18.5, 61)
     ax.legend(loc="upper left", fontsize=6.0, handlelength=1.6, handletextpad=0.4, borderaxespad=0.1, labelspacing=0.25)
     ax.set_xlabel(tx(r"day ($\rho=0.5$, one replication)", r"day ($\rho=0.5$, one replication)"))
-    ax.set_ylabel("mean generalised cost (min)")
+    ax.set_ylabel("mean generalized cost (min)")
     panel_title(ax, "e", "Ideal agents herd")
 
     # (f) effective influence

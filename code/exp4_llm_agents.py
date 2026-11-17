@@ -1,6 +1,6 @@
 """
 Experiment 4 -- Language-model agents in the loop, and the fidelity of the surrogate agents
-(Corollary 4, surrogate fidelity).
+(Corollary 3, surrogate fidelity).
 
 Every traveller's agent is a real language-model call. On each day on which an agent
 re-plans, the model reads the traveller's instruction in plain words, picks an objective
@@ -438,7 +438,7 @@ def analyse(args, net, v, g, runs, records, rep_records, backend_name, log):
         "model_route_shares_after_burn_in": np.mean([r["shares"][burn:].mean(axis=0) for r in runs], axis=0).tolist(),
     }
 
-    # Corollary 4 in normalised form: |W - W_sur| <= beta * osc(c) / (1 - beta) * (expected deviation per day)
+    # Corollary 3 in normalised form (results key kept as 'corollary_4' for compatibility): |W - W_sur| <= beta * osc(c) / (1 - beta) * (expected deviation per day)
     if rep_records:
         lo = np.mean((net.t0[None, :] + 60 * net.toll[None, :] / v[:, None]).min(axis=1))
         hi = np.mean((net.times(np.full(R, float(len(v))))[None, :] + 60 * net.toll[None, :] / v[:, None]).max(axis=1))
@@ -494,7 +494,7 @@ def report(res):
           f"{pm(s['delegation_loss']['surrogate_default'])}")
     if "corollary_4" in res:
         c = res["corollary_4"]
-        print(f"Corollary 4 with the measured distance: {c['default']:.0f} min (default surrogate), against "
+        print(f"Corollary 3 (surrogate fidelity) with the measured distance: {c['default']:.0f} min (default surrogate), against "
               f"osc(c) = {c['osc_c_min']:.0f} min; summed deviation per day {c['summed_deviation_per_day']['default']:.2f} "
               f"(one agent {c['single_agent_deviation_per_day']['default']:.3f}), informative below {c['informative_below']:.3f}")
     u = res["usage"]
