@@ -1,0 +1,24 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite the paper below."
+title: "AgMS-foundation: reference implementation and experiments for agentic mobility systems"
+repository-code: "https://github.com/jbyutse/AgMS-foundation"
+authors:
+  - family-names: Yu
+    given-names: Jiangbo
+    affiliation: McGill University
+  - family-names: Eslami
+    given-names: Ali
+    affiliation: McGill University
+license: MIT
+version: 2.0.0
+date-released: 2026-11-17
+preferred-citation:
+  type: article
+  title: "A Markov Model of Agentic Mobility Systems: From Human–Machine Agency to Network Traffic Dynamics"
+  authors:
+    - family-names: Yu
+      given-names: Jiangbo
+    - family-names: Eslami
+      given-names: Ali
+  year: 2026
+  notes: "Preprint"
